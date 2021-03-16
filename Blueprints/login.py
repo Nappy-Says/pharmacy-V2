@@ -1,4 +1,4 @@
-from flask import Blueprint, session, render_template, request
+from flask import Blueprint, session, render_template, request, redirect
 from models import *
 
 login = Blueprint('login', __name__)
@@ -18,4 +18,4 @@ def CheckLogin():
     _username = request.form['username']
     _password = request.form['password']
 
-    return _username + ' ' + _password
+    return redirect('/')

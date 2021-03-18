@@ -3,6 +3,11 @@ from models import *
 
 client = Blueprint('client', __name__)
 
+@client.route('/', methods = ['GET'])
+def Client_Manage():
+    return render_template('client.html')
+
 @client.route('/add', methods = ['GET'])
 def Client_Add():
-    return render_template('client.html')
+    return render_template('client_add.html')
+

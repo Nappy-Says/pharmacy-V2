@@ -10,3 +10,11 @@ def products_add():
 @products.route('/buy', methods = ['GET'])
 def product_buy():
     return render_template('products_buy.html')
+
+@products.route('/dimension', methods = ['GET'])
+def products_dimension():
+    return render_template('products_dimension.html')
+
+@products.route('/category', methods = ['GET'])
+def products_category():
+    return render_template('products_category.html')

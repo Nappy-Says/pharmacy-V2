@@ -10,7 +10,6 @@ def CheckAuth():
 @login.route('/', methods = ['GET'])
 def SendHtmlLogin():
     CheckAuth()
-
     return render_template('login.html')
 
 @login.route('/', methods = ['POST'])

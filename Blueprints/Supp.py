@@ -7,6 +7,7 @@ supp = Blueprint('supp', __name__)
 def supp_add():
     return render_template('product_add.html')
 
+
 @supp.route('/buy', methods = ['GET'])
 def supp_manage():
     return render_template('products_buy.html')

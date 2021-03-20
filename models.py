@@ -71,4 +71,7 @@ class Buy(BaseModel):
     after_price = FloatField()
     expiry_date = DateTimeField()
 
-Products.create_table()
+class Users(BaseModel):
+    id = AutoField()
+    username = CharField()
+    password = CharField()

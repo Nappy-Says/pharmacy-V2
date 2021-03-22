@@ -10,9 +10,9 @@ app.config['SECRET_KEY'] = 'jUMAISINBA SHEL BEL BEL BEL'
 # app.permanent_session_lifetime = datetime
 
 
-app.register_blueprint(loginBlueprint, url_prefix = '/login')
+app.register_blueprint(loginBlueprint, url_prefix = '/login', template_folder='templates/login')
 app.register_blueprint(clientBlueprint, url_prefix = '/client')
-app.register_blueprint(productsBlueprint, url_prefix = '/products')
+app.register_blueprint(productsBlueprint, url_prefix = '/products', template_folder='templates/products')
 
 
 @app.route('/')
@@ -27,8 +27,12 @@ def RedirecttoLogin():
 
 @app.route('/products')
 def Show_products():
-    return render_template('products.html')
+    if not 'username' in session:
+       return redirect('/login') 
+    return redirect('/products/')
 
-@app.route('/login')
-def redirectt():
-    return redirect('/login/')
+@app.route('/client')
+def show_client():
+    if not 'username' in session:
+       return redirect('/login') 
+    return redirect('/client/')

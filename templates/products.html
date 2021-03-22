@@ -3,9 +3,13 @@
 {% block idbody %}bg-gradient-primary{% endblock %}
 
 
-{% block title %}
+    {% block title %}
 Управление лекарство 
 {% endblock %}
+
+
+
+
 
 {% block content %}
                 <!-- Begin Page Content -->
@@ -14,92 +18,62 @@
                     <!-- Page Heading -->
                     <h1 class="h3 mb-2 text-gray-800">Управление лекарство</h1>
                     <!-- DataTales Example -->
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Аптека Саховат</h6>
-                        </div>
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
-                                        </tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Position</th>
-                                            <th>Office</th>
-                                            <th>Age</th>
-                                            <th>Start date</th>
-                                            <th>Salary</th>
-                                        </tr>
-                                    </tfoot>
-                                    <tbody>
-                                        <tr>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>Edinburgh</td>
-                                            <td>61</td>
-                                            <td>2011/04/25</td>
-                                            <td>$320,800</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Garrett Winters</td>
-                                            <td>Accountant</td>
-                                            <td>Tokyo</td>
-                                            <td>63</td>
-                                            <td>2011/07/25</td>
-                                            <td>$170,750</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Ashton Cox</td>
-                                            <td>Junior Technical Author</td>
-                                            <td>San Francisco</td>
-                                            <td>66</td>
-                                            <td>2009/01/12</td>
-                                            <td>$86,000</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Cedric Kelly</td>
-                                            <td>Senior Javascript Developer</td>
-                                            <td>Edinburgh</td>
-                                            <td>22</td>
-                                            <td>2012/03/29</td>
-                                            <td>$433,060</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Airi Satou</td>
-                                            <td>Accountant</td>
-                                            <td>Tokyo</td>
-                                            <td>33</td>
-                                            <td>2008/11/28</td>
-                                            <td>$162,700</td>
-                                        </tr>
-                
-                                    </tbody>
-                                </table>
+                    <body>
+                        <header class="row">
+                            <div class="wrapper col-md-3">
+                                <div class="search-input">
+                                    <input type="text" placeholder="Type to search..">
+                                    <div class="autocom-box"></div>
+                                    <div class="icon" onclick="inputClear()">
+                                        <i class="fas fa-times"></i>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
+                            <div class="buttonWrapper col-md-3">
+                                <a href="#">Добавить</a>
+                            </div>
+                        </header>
+                        <main class="row">
+                            
+                            <table class="table table-striped col-sm-12 myDataTable">
+                                <thead class="table-dark">
+                                  <tr>
+                                    <th scope="col">Штрихкод</th>
+                                    <th scope="col">Название</th>
+                                    <th scope="col">Ед. Измерения</th>
+                                    <th scope="col">Срок годности</th>
+                                    <th scope="col">Покупочная цена</th>
+                                    <th scope="col">Цена продажи</th>
+                                    <th scope="col">Остаток</th>
+                                    <th scope="col"></th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                {% for i in data %}
+                                <tr>
+                                    <th scope="row">{{i.id}}</th>
+                                    <td>{{i.name}}</td>
+                                    <td>{{i.barcode}}</td>
+                                    <td></td>
+                                    <td>Mark</td>
+                                    <td>Otto</td>
+                                    <td>@mdo</td>
+                                    <td>
+                                        <div class="penButton">
+                                            <i class="fas fa-info"></i>
+                                            <i class="fas fa-pen"></i>
+                                        </div>
+                                    </td>
+                                  </tr>
+                                {% endfor %}
+                                </tbody>
+                              </table>
+                        </main>
                 
                 </div>
-                <!-- /.container-fluid -->
-                
-                </div>
-                <!-- End of Main Content -->
-                
-                
-                
-                </div>
-                <!-- End of Content Wrapper -->
-                
-                </div>
-                
+                <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src="//cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+    <script src="{{ url_for('static', filename='js/suggestions.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
                 {% endblock %}

@@ -47,13 +47,11 @@ class Suppliers(BaseModel):
 class Client(BaseModel):
     id= AutoField()
     fio = CharField()
-    phone = IntegerField()
-    description = CharField()
     type_client = CharField()
-    debit = FloatField()
-    credit = FloatField()
+    phone = IntegerField()
+    email = CharField()
+    description = CharField()
     balance = FloatField()
-    address = CharField()
 
 # Товары 
 class Products(BaseModel):
@@ -75,3 +73,5 @@ class Users(BaseModel):
     id = AutoField()
     username = CharField()
     password = CharField()
+
+Client.create_table()

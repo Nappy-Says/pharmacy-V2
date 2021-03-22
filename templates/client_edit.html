@@ -19,27 +19,35 @@
                         <div class="container" style="width:50%">
                         <div class="form-group">
                             <label for="exampleFormControlInput1">Ф.И.О</label>
-                            <input class="form-control" required name="fio" id="exampleFormControlInput1" type="text" placeholder="Введите имя и фамилию">
+                            <input class="form-control" required name="fio" id="exampleFormControlInput1" type="text" value ="{{client.fio}}" placeholder="Введите имя и фамилию">
                         </div>
                         <div class="form-group">
                             <label for="exampleFormControlSelect1">Тип клиента</label
                                 ><select class="form-control" required name="type_select" id="exampleFormControlSelect1">
                                 <option>Выберите тип клиента</option>
-                                <option>Физ. Лицо</option>
-                                <option>Юр. Лицо</option>
+                                <option 
+                                    {% if client.type_client == 'Физ. Лицо' %}
+                                    selected
+                                    {% endif %}
+                                >Физ. Лицо</option>
+                                <option
+                                {% if client.type_client == 'Юр. Лицо' %}
+                                selected
+                                {% endif %}
+                                >Юр. Лицо</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="exampleFormControlInput1">Телефон</label>
-                            <input class="form-control" required name ="phone" id="exampleFormControlInput1" type="number" placeholder="Введите телефон">
+                            <input class="form-control" value="{{ client.phone }}" required name ="phone" id="exampleFormControlInput1" pattern="{1}[0-9]{11,14}"  type="tel" placeholder="Введите телефон">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Email</label>
-                            <input type="email" name="email" required class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                            <input type="email" name="email" value="{{ client.email }}" required class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                             <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                           </div>
                         <div class="form-group"><label for="exampleFormControlTextarea1">Описание</label>
-                            <textarea class="form-control" required name="description" id="exampleFormControlTextarea1" rows="2"></textarea>
+                            <textarea class="form-control" value=""  required name="description" id="exampleFormControlTextarea1" rows="2">{{ client.description }}</textarea>
                         </div>
                         <div class="form-group">
                             <label for="exampleFormControlSelect1">Аптеки</label
@@ -49,10 +57,10 @@
                                 <option>Аптека 3</option>
                             </select>
                         </div>
-                        <button type="submit" class="btn btn-primary mt-3">Добавить</button>
+                        <button type="submit" class="btn btn-primary mt-3">Изменить</button>
+                        <a href="/client/delete/{{client.id}}" class="btn btn-danger mt-3" >Удалить</a>
                     </div>
                     </form>
-
                 </div>
                 <!-- /.container-fluid -->
     </div>

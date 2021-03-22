@@ -24,6 +24,11 @@ def product_create():
     return 'ДОБАВЛЕНО'
 
 
+@products.route('/',methods = ['GET'])
+def Show_products():
+    data = Products.select()
+    return render_template('products.html', data=data)
+
 @products.route('/buy', methods = ['GET'])
 def product_buy():
     return render_template('products_buy.html')
